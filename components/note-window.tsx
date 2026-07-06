@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { about } from "@/data/projects";
+import { about, resume } from "@/data/projects";
 import { MacWindowFrame, TrafficLights } from "@/components/mac-window";
 
 /**
@@ -36,6 +36,7 @@ export function NoteWindow({ onClose }: { onClose: () => void }) {
                 <p className="text-center text-[11px] text-black/40">June 10, 2025 at 9:41 AM</p>
                 <h2 className="mt-3 text-[22px] leading-tight font-bold">aboutme</h2>
                 <p className="mt-3 text-[14.5px] leading-relaxed text-black/80">{about.statement}</p>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-black/80">{about.offering}</p>
                 <ul className="mt-5 flex flex-col gap-1 text-[14.5px] leading-relaxed text-black/80">
                     {about.facts.map((fact) => (
                         <li key={fact.label}>
@@ -43,6 +44,21 @@ export function NoteWindow({ onClose }: { onClose: () => void }) {
                         </li>
                     ))}
                 </ul>
+
+                <p className="mt-5 text-[14.5px] font-bold text-black/85">Experience</p>
+                <ul className="mt-1.5 flex flex-col gap-1 text-[14.5px] leading-relaxed text-black/80">
+                    {resume.experience.map((entry) => (
+                        <li key={`${entry.company}-${entry.years}`}>
+                            <span className="text-black/45">{entry.years}</span> — {entry.role} at{" "}
+                            {entry.company}
+                        </li>
+                    ))}
+                </ul>
+
+                <p className="mt-5 text-[14.5px] font-bold text-black/85">Expert at</p>
+                <p className="mt-1.5 text-[14.5px] leading-relaxed text-black/80">
+                    {resume.expertise}
+                </p>
             </div>
         </MacWindowFrame>
     );

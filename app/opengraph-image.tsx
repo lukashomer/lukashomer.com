@@ -1,12 +1,19 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "Lukas — Product Designer & Engineer";
 
-// OG placeholder — same design language as the site. Replace with a real
-// capture of the canvas whenever you like; this ships zero binary assets.
-export default function OpenGraphImage() {
+/**
+ * OG image matching the live site: white macOS desktop, the greeting on the
+ * left, the pixelated character on the right.
+ */
+export default async function OpenGraphImage() {
+    const character = await readFile(join(process.cwd(), "public/objects/character.png"));
+    const characterSrc = `data:image/png;base64,${character.toString("base64")}`;
+
     return new ImageResponse(
         (
             <div
@@ -14,46 +21,55 @@ export default function OpenGraphImage() {
                     width: "100%",
                     height: "100%",
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    padding: 64,
-                    backgroundColor: "#f1efea",
-                    color: "#1a1813",
+                    backgroundColor: "#ffffff",
+                    color: "#000000",
                     fontFamily: "sans-serif",
+                    position: "relative",
                 }}
             >
+                {/* menu bar hint */}
+                <div
+                    style={{
+                        position: "absolute",
+                        top: 22,
+                        left: 40,
+                        display: "flex",
+                        fontSize: 20,
+                        fontWeight: 700,
+                    }}
+                >
+                    lukashomer.com
+                </div>
+                {/* greeting */}
                 <div
                     style={{
                         display: "flex",
-                        justifyContent: "space-between",
-                        fontSize: 22,
-                        letterSpacing: 3,
-                        color: "#6e6a60",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        paddingLeft: 64,
+                        width: 780,
+                        fontSize: 52,
+                        lineHeight: 1.25,
                     }}
                 >
-                    <span>LUKÁŠ HOMÉR — MOOW S.R.O.</span>
-                    <span>BRATISLAVA, SK</span>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                    <div style={{ width: 48, height: 48, backgroundColor: "#ff4a00" }} />
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            marginTop: 32,
-                            fontSize: 76,
-                            fontWeight: 600,
-                            letterSpacing: -2,
-                            lineHeight: 1.05,
-                        }}
-                    >
-                        <span>Product Designer</span>
-                        <span>&amp; Engineer</span>
+                    <div style={{ display: "flex" }}>
+                        <span>Hi,&nbsp;</span>
+                        <span style={{ fontWeight: 700 }}>I’m Lukas.</span>
                     </div>
-                    <div style={{ marginTop: 28, fontSize: 26, color: "#6e6a60" }}>
-                        I design products, and then I build them.
+                    <div style={{ display: "flex" }}>I used to be a designer,</div>
+                    <div style={{ display: "flex" }}>
+                        <span>but now I’m&nbsp;</span>
+                        <span style={{ fontWeight: 700 }}>a Design Engineer.</span>
                     </div>
                 </div>
+                {/* character */}
+                <img
+                    src={characterSrc}
+                    alt=""
+                    width={318}
+                    height={565}
+                    style={{ position: "absolute", right: 60, top: 40 }}
+                />
             </div>
         ),
         size,

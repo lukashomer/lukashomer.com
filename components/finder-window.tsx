@@ -15,14 +15,9 @@ type Section = "work" | "ideas";
 
 const SECTION_LABELS: Record<Section, string> = { work: "myworks", ideas: "ideas" };
 
-// Deterministic Finder-style metadata per row (no real dates in project data).
-function rowMeta(index: number) {
-    const minutes = String((17 * (index + 3)) % 60).padStart(2, "0");
-    const hour = 9 + (index % 3);
-    return {
-        date: `Apr 1, 2025 at ${hour}:${minutes} AM`,
-        size: `${13 + index * 7} MB`,
-    };
+// Sizes stay playful; dates come from the data file (real project timeline).
+function rowSize(index: number) {
+    return `${13 + index * 7} MB`;
 }
 
 function FolderGlyph({ className }: { className?: string }) {
@@ -196,7 +191,7 @@ export function FinderWindow({
                 {/* Rows */}
                 <ul className="flex-1 overflow-y-auto px-1.5 py-1.5" role="list">
                     {rows.map((project, i) => {
-                        const meta = rowMeta(i);
+                        const size = rowSize(i);
                         const isSelected = selected === project.slug;
                         return (
                             <li key={project.id}>
@@ -234,13 +229,13 @@ export function FinderWindow({
                                         <span className="truncate">{project.title}</span>
                                     </span>
                                     <span className={`hidden w-[176px] shrink-0 sm:block ${isSelected ? "text-white/85" : "text-black/55"}`}>
-                                        {meta.date}
+                                        {project.modified}
                                     </span>
                                     <span className={`w-[72px] shrink-0 ${isSelected ? "text-white/85" : "text-black/55"}`}>
-                                        {meta.size}
+                                        {size}
                                     </span>
                                     <span className={`hidden w-[72px] shrink-0 sm:block ${isSelected ? "text-white/85" : "text-black/55"}`}>
-                                        Folder
+                                        File
                                     </span>
                                 </button>
                             </li>

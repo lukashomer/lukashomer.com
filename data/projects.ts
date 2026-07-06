@@ -31,6 +31,8 @@ export interface Project {
     role: string;
     stack: string[];
     images: ProjectImage[];
+    /** Real 'Date Modified' shown in the Finder list. */
+    modified: string;
     link?: { href: string; label: string };
     position: { x: number; y: number };
     rotation: number;
@@ -43,6 +45,7 @@ export const projects: Project[] = [
     {
         id: "sara-ai",
         slug: "sara-ai",
+        modified: "Jun 18, 2025",
         section: "work",
         index: "01",
         title: "Sara AI",
@@ -65,6 +68,7 @@ export const projects: Project[] = [
     {
         id: "simplicity",
         slug: "simplicity",
+        modified: "May 26, 2025",
         section: "work",
         index: "02",
         title: "Simplicity",
@@ -85,6 +89,7 @@ export const projects: Project[] = [
     {
         id: "youdare",
         slug: "youdare",
+        modified: "Aug 14, 2023",
         section: "work",
         index: "03",
         title: "Youdare",
@@ -105,6 +110,7 @@ export const projects: Project[] = [
     {
         id: "realtyscanner",
         slug: "realtyscanner",
+        modified: "Feb 9, 2024",
         section: "work",
         index: "04",
         title: "RealtyScanner",
@@ -125,6 +131,7 @@ export const projects: Project[] = [
     {
         id: "plugdeck",
         slug: "plugdeck",
+        modified: "Apr 30, 2025",
         section: "work",
         index: "05",
         title: "Plugdeck",
@@ -145,6 +152,7 @@ export const projects: Project[] = [
     {
         id: "thedogwod",
         slug: "thedogwod",
+        modified: "Nov 21, 2024",
         section: "work",
         index: "06",
         title: "Thedogwod",
@@ -164,6 +172,7 @@ export const projects: Project[] = [
     {
         id: "cafepoint",
         slug: "cafepoint",
+        modified: "Oct 3, 2024",
         section: "work",
         index: "07",
         title: "Cafepoint",
@@ -186,6 +195,7 @@ export const projects: Project[] = [
     {
         id: "office-management",
         slug: "office-management",
+        modified: "Jan 15, 2025",
         section: "ideas",
         index: "08",
         title: "Office Management App",
@@ -212,11 +222,13 @@ export const about = {
     location: "Bratislava, Slovakia",
     // Positioning statement — refined tone, same meaning.
     statement:
-        "I design products, and then I build them. Seventeen years across product design, design systems, and front-end engineering — currently building AI tools for real estate at Elli and Sara, and e-commerce plugins at Plugdeck.",
+        "I design products, and then I build them. Seventeen years across product design, design systems, and front-end engineering — currently building AI tools for real estate at Simplicity and Sara, and e-commerce plugins at Plugdeck.",
     facts: [
         { label: "Experience", value: "17+ years" },
         { label: "Based", value: "Bratislava, SK" },
     ],
+    offering:
+        "End-to-end product delivery by one person: brand identity, UI/UX and scalable design systems in Figma — plus the production code to ship them. E-commerce themes, landing pages and full websites built daily with AI-assisted development.",
     portraitAlt: "Portrait of Lukáš Homér",
 };
 
