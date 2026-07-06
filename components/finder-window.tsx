@@ -186,7 +186,7 @@ export function FinderWindow({
                 {/* Column headers */}
                 <div className="flex items-center gap-3 border-b border-black/10 px-4 pb-1 text-[11px] text-black/45">
                     <span className="min-w-0 flex-1 pl-6">Name</span>
-                    <span className="w-[176px] shrink-0 font-semibold text-black/60">
+                    <span className="hidden w-[176px] shrink-0 font-semibold text-black/60 sm:block">
                         Date Modified <span aria-hidden="true">⌄</span>
                     </span>
                     <span className="w-[72px] shrink-0">Size</span>
@@ -207,7 +207,7 @@ export function FinderWindow({
                                         setSelected(project.slug);
                                         onOpenProject(project, e.currentTarget);
                                     }}
-                                    className={`flex w-full items-center gap-3 rounded-[5px] px-2.5 py-[3px] text-left transition-colors duration-100 ease-linear ${
+                                    className={`flex w-full items-center gap-3 rounded-[5px] px-2.5 py-1.5 text-left sm:py-[3px] transition-colors duration-100 ease-linear ${
                                         isSelected
                                             ? "bg-[#2962d9] text-white"
                                             : i % 2 === 0
@@ -233,7 +233,7 @@ export function FinderWindow({
                                         />
                                         <span className="truncate">{project.title}</span>
                                     </span>
-                                    <span className={`w-[176px] shrink-0 ${isSelected ? "text-white/85" : "text-black/55"}`}>
+                                    <span className={`hidden w-[176px] shrink-0 sm:block ${isSelected ? "text-white/85" : "text-black/55"}`}>
                                         {meta.date}
                                     </span>
                                     <span className={`w-[72px] shrink-0 ${isSelected ? "text-white/85" : "text-black/55"}`}>

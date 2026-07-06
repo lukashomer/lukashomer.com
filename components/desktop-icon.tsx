@@ -35,7 +35,7 @@ export function DesktopIcon({
             initial={reduced ? { opacity: 0 } : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 280, damping: 26, delay: 0.15 + order * 0.06 }}
-            whileHover={reduced ? undefined : { scale: 1.02 }}
+            whileHover={reduced || mobile ? undefined : { scale: 1.02 }}
             whileTap={reduced ? undefined : { scale: 0.97 }}
         >
             <span className="relative block aspect-square w-full">

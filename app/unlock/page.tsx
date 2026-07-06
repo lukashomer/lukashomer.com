@@ -61,7 +61,7 @@ export default function UnlockPage() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter Password"
                     aria-label="Password"
-                    className="h-9 w-56 rounded-full bg-black/[0.06] px-4 pr-10 text-center text-[13px] text-black/85 placeholder:text-black/35 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2962d9]/60"
+                    className="h-9 w-56 rounded-full bg-black/[0.06] px-4 pr-10 text-center text-[16px] text-black/85 placeholder:text-black/35 focus:outline-none sm:text-[13px]"
                 />
                 <button
                     type="submit"

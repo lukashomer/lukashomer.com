@@ -56,11 +56,22 @@ body {
     background: rgba(41, 98, 217, 0.28);
 }
 
-/* macOS focus ring */
+/* macOS focus ring — keyboard navigation only; never while typing in a
+   field or tapping/clicking (inputs and pointer interactions stay clean) */
 :focus-visible {
     outline: 3px solid rgba(41, 98, 217, 0.5);
     outline-offset: 1px;
     border-radius: 2px;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: none;
+}
+
+/* no gray/blue tap flash on touch devices */
+html {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .text-micro {
