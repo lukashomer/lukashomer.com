@@ -7,8 +7,10 @@ export const APPLE_FONT =
     '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif';
 
 /**
- * Red / yellow / green window controls. Red closes, green zooms. Like real
- * macOS, hovering the group reveals the ×/−/+ symbols on all three lights.
+ * Red / yellow / green window controls, matched to the real macOS values:
+ * fills #FF5F57 / #FEBC2E / #28C840 with hue-matched hairline borders, and
+ * hover reveals the glyphs in the dark shade of each hue — ×, −, and the
+ * green fullscreen triangles (not a plus).
  */
 export function TrafficLights({
     onClose,
@@ -18,7 +20,7 @@ export function TrafficLights({
     onZoom?: () => void;
 }) {
     const symbolClass =
-        "absolute inset-0 flex items-center justify-center text-black/55 opacity-0 transition-opacity duration-100 ease-linear group-hover/lights:opacity-100";
+        "absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-100 ease-linear group-hover/lights:opacity-100";
 
     return (
         <div className="group/lights flex items-center gap-2">
@@ -26,21 +28,21 @@ export function TrafficLights({
                 type="button"
                 onClick={onClose}
                 aria-label="Close window"
-                className="relative size-3 rounded-full bg-[#ff5f57] ring-1 ring-black/10 ring-inset transition duration-100 ease-linear active:brightness-90"
+                className="relative size-3 rounded-full border border-[#e0443e] bg-[#ff5f57] transition duration-100 ease-linear active:brightness-90"
             >
-                <span className={symbolClass} aria-hidden="true">
+                <span className={`${symbolClass} text-[#750000]`} aria-hidden="true">
                     <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
-                        <path d="M1 1l4 4M5 1L1 5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                        <path d="M1.1 1.1l3.8 3.8M4.9 1.1L1.1 4.9" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
                     </svg>
                 </span>
             </button>
             <span
                 aria-hidden="true"
-                className="relative size-3 rounded-full bg-[#febc2e] ring-1 ring-black/10 ring-inset"
+                className="relative size-3 rounded-full border border-[#dea123] bg-[#febc2e]"
             >
-                <span className={symbolClass}>
-                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
-                        <path d="M1 3.5h5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                <span className={`${symbolClass} text-[#995700]`}>
+                    <svg width="8" height="2" viewBox="0 0 8 2" fill="none">
+                        <path d="M0.5 1h7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
                     </svg>
                 </span>
             </span>
@@ -48,11 +50,13 @@ export function TrafficLights({
                 type="button"
                 onClick={onZoom}
                 aria-label="Zoom window"
-                className="relative size-3 rounded-full bg-[#1ac332] ring-1 ring-black/10 ring-inset transition duration-100 ease-linear active:brightness-90"
+                className="relative size-3 rounded-full border border-[#1aab29] bg-[#28c840] transition duration-100 ease-linear active:brightness-90"
             >
-                <span className={symbolClass} aria-hidden="true">
-                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
-                        <path d="M3.5 1v5M1 3.5h5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                <span className={`${symbolClass} text-[#006500]`} aria-hidden="true">
+                    {/* fullscreen triangles */}
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="currentColor">
+                        <path d="M1 4.2V1h3.2L1 4.2z" />
+                        <path d="M6 2.8V6H2.8L6 2.8z" />
                     </svg>
                 </span>
             </button>
