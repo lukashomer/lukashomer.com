@@ -24,7 +24,7 @@ export function PdfWindow({ onClose }: { onClose: () => void }) {
         >
             {/* Title bar */}
             <div
-                className="relative flex shrink-0 items-center border-b border-black/10 bg-[#f8f8f8] px-4 py-3"
+                className="relative flex shrink-0 items-center border-b border-black/[0.07] bg-[#f8f8f8] px-4 py-3"
                 onPointerDown={(e) => startDrag.current(e)}
             >
                 <span onPointerDown={(e) => e.stopPropagation()}>

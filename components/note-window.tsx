@@ -22,7 +22,7 @@ export function NoteWindow({ onClose }: { onClose: () => void }) {
         >
             {/* Notes toolbar */}
             <div
-                className="flex items-center gap-3 border-b border-black/10 bg-[#f8f8f8] px-4 py-3"
+                className="flex items-center gap-3 border-b border-black/[0.07] bg-[#f8f8f8] px-4 py-3"
                 onPointerDown={(e) => startDrag.current(e)}
             >
                 <span onPointerDown={(e) => e.stopPropagation()}>

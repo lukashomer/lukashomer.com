@@ -25,7 +25,7 @@ function ContactsBody() {
             <h2 className="mt-3 text-[17px] font-bold text-black/85">{about.name}</h2>
             <p className="text-[12px] text-black/45">{about.headline}</p>
 
-            <dl className="mt-5 w-full border-t border-black/10">
+            <dl className="mt-5 w-full border-t border-black/[0.05]">
                 {[
                     {
                         label: "email",
@@ -53,7 +53,7 @@ function ContactsBody() {
                 ].map((row) => (
                     <div
                         key={row.label}
-                        className="flex items-baseline gap-4 border-b border-black/[0.06] py-2 last:border-b-0"
+                        className="flex items-baseline gap-4 border-b border-black/[0.05] py-2 last:border-b-0"
                     >
                         <dt className="w-24 shrink-0 text-right text-[11px] font-semibold text-black/40">
                             {row.label}
@@ -73,7 +73,7 @@ function ResumeBody() {
                 {resume.experience.map((entry) => (
                     <li
                         key={`${entry.company}-${entry.years}`}
-                        className="flex flex-col gap-0.5 border-b border-black/[0.06] py-2.5 first:pt-0 sm:flex-row sm:items-baseline sm:gap-5"
+                        className="flex flex-col gap-0.5 border-b border-black/[0.05] py-2.5 first:pt-0 sm:flex-row sm:items-baseline sm:gap-5"
                     >
                         <span className="w-32 shrink-0 text-[12px] text-black/40 tabular-nums">
                             {entry.years}
@@ -121,7 +121,7 @@ export function InfoOverlay({ kind, onClose }: { kind: InfoKind; onClose: () => 
             startDragRef={(fn) => (startDrag.current = fn)}
         >
             <div
-                className="relative flex shrink-0 items-center border-b border-black/10 bg-[#f8f8f8] px-4 py-3"
+                className="relative flex shrink-0 items-center border-b border-black/[0.07] bg-[#f8f8f8] px-4 py-3"
                 onPointerDown={(e) => startDrag.current(e)}
             >
                 <span onPointerDown={(e) => e.stopPropagation()}>

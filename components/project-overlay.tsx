@@ -30,7 +30,7 @@ export function ProjectOverlay({
         >
             {/* Title bar */}
             <div
-                className="relative flex shrink-0 items-center border-b border-black/10 px-4 py-3"
+                className="relative flex shrink-0 items-center border-b border-black/[0.07] px-4 py-3"
                 onPointerDown={(e) => startDrag.current(e)}
             >
                 <span onPointerDown={(e) => e.stopPropagation()}>
@@ -53,7 +53,7 @@ export function ProjectOverlay({
                     {project.description}
                 </p>
 
-                <dl className="mt-6 grid grid-cols-1 gap-5 border-t border-black/10 pt-5 sm:grid-cols-2">
+                <dl className="mt-6 grid grid-cols-1 gap-5 border-t border-black/[0.05] pt-5 sm:grid-cols-2">
                     <div>
                         <dt className="text-[11px] font-semibold text-black/40">Role</dt>
                         <dd className="mt-1 text-[13px] leading-relaxed text-black/80">
