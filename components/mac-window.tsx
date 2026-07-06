@@ -6,7 +6,10 @@ import { motion, useDragControls, useReducedMotion } from "motion/react";
 export const APPLE_FONT =
     '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif';
 
-/** Red / yellow / green window controls. Red closes, green zooms. */
+/**
+ * Red / yellow / green window controls. Red closes, green zooms. Like real
+ * macOS, hovering the group reveals the ×/−/+ symbols on all three lights.
+ */
 export function TrafficLights({
     onClose,
     onZoom,
@@ -14,24 +17,45 @@ export function TrafficLights({
     onClose: () => void;
     onZoom?: () => void;
 }) {
+    const symbolClass =
+        "absolute inset-0 flex items-center justify-center text-black/55 opacity-0 transition-opacity duration-100 ease-linear group-hover/lights:opacity-100";
+
     return (
-        <div className="flex items-center gap-2">
+        <div className="group/lights flex items-center gap-2">
             <button
                 type="button"
                 onClick={onClose}
                 aria-label="Close window"
-                className="size-3 rounded-full bg-[#ff5f57] ring-1 ring-black/10 ring-inset transition duration-100 ease-linear hover:brightness-90"
-            />
+                className="relative size-3 rounded-full bg-[#ff5f57] ring-1 ring-black/10 ring-inset transition duration-100 ease-linear active:brightness-90"
+            >
+                <span className={symbolClass} aria-hidden="true">
+                    <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
+                        <path d="M1 1l4 4M5 1L1 5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                    </svg>
+                </span>
+            </button>
             <span
                 aria-hidden="true"
-                className="size-3 rounded-full bg-[#febc2e] ring-1 ring-black/10 ring-inset"
-            />
+                className="relative size-3 rounded-full bg-[#febc2e] ring-1 ring-black/10 ring-inset"
+            >
+                <span className={symbolClass}>
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
+                        <path d="M1 3.5h5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                    </svg>
+                </span>
+            </span>
             <button
                 type="button"
                 onClick={onZoom}
                 aria-label="Zoom window"
-                className="size-3 rounded-full bg-[#1ac332] ring-1 ring-black/10 ring-inset transition duration-100 ease-linear hover:brightness-90"
-            />
+                className="relative size-3 rounded-full bg-[#1ac332] ring-1 ring-black/10 ring-inset transition duration-100 ease-linear active:brightness-90"
+            >
+                <span className={symbolClass} aria-hidden="true">
+                    <svg width="7" height="7" viewBox="0 0 7 7" fill="none">
+                        <path d="M3.5 1v5M1 3.5h5" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" />
+                    </svg>
+                </span>
+            </button>
         </div>
     );
 }

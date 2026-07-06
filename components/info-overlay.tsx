@@ -41,7 +41,7 @@ function ContactsBody() {
                                 rel="noreferrer noopener"
                                 className="text-[#2962d9] hover:underline"
                             >
-                                {contact.linkedin} ↗
+                                {contact.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")} ↗
                             </a>
                         ),
                     },

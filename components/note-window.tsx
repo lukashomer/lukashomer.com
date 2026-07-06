@@ -29,15 +29,6 @@ export function NoteWindow({ onClose }: { onClose: () => void }) {
                     <TrafficLights onClose={onClose} onZoom={() => setZoomed((z) => !z)} />
                 </span>
                 <span className="ml-1 text-[13px] font-semibold text-black/60">aboutme</span>
-                <span className="ml-auto flex items-center gap-4 text-black/45" aria-hidden="true">
-                    {/* checklist / compose glyphs, decorative */}
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                        <path d="M1.5 3.5l1.2 1.2 2-2.4M1.5 8.5l1.2 1.2 2-2.4M7 4h6.5M7 9h6.5M1.5 13.5h12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                        <path d="M9.8 2.2l3 3L6 12l-3.6.6L3 9l6.8-6.8z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
-                    </svg>
-                </span>
             </div>
 
             {/* Note body */}
@@ -52,7 +43,6 @@ export function NoteWindow({ onClose }: { onClose: () => void }) {
                         </li>
                     ))}
                 </ul>
-                <p className="mt-5 text-[14.5px] text-black/80">— Lukáš</p>
             </div>
         </MacWindowFrame>
     );
