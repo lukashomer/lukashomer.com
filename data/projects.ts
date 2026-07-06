@@ -266,8 +266,8 @@ export const desk = {
         src: "/objects/character.png",
         alt: "Lukáš Homér as a 3D game character",
         // pixelated source (regenerate larger/smaller to tune the effect)
-        width: 240,
-        height: 426,
+        width: 264,
+        height: 469,
         /** Optional drop-in for the parked 3D scene (components/character-3d.tsx). */
         glb: "/objects/character.glb",
     },
