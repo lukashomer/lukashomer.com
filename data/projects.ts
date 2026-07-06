@@ -265,6 +265,7 @@ export type NavAction =
     | { type: "finder"; section: "work" | "ideas" }
     | { type: "note" }
     | { type: "overlay"; kind: "contacts" | "resume" }
+    | { type: "pdf" } // open the CV like macOS Preview
     | { type: "link"; href: string }
     | { type: "none" }; // decorative menu entry
 
@@ -309,6 +310,13 @@ export const desktopIcons: DesktopIconDef[] = [
         position: { x: 62.57, y: 10.993 },
     },
     {
+        id: "resume",
+        label: "lukashomercv.pdf",
+        icon: "/desktop/resume.png",
+        action: { type: "pdf" },
+        position: { x: 53.8, y: 40.5 },
+    },
+    {
         id: "contacts",
         label: "contacts",
         icon: "/desktop/contacts.png",
@@ -320,7 +328,7 @@ export const desktopIcons: DesktopIconDef[] = [
 // ——— RESUME ——————————————————————————————————————————————————
 export const resume = {
     /** Drop the real PDF into /public/resume.pdf */
-    pdf: "/resume.pdf",
+    pdf: "/lukashomercv.pdf",
     expertise:
         "Figma & design systems, Claude Code (AI-assisted development), HTML/CSS/JS, e-commerce themes, Adobe Photoshop & Illustrator",
     experience: [

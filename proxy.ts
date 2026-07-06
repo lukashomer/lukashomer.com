@@ -18,6 +18,6 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-    // gate page routes only — skip api, next internals, and files
-    matcher: ["/((?!api|_next|favicon.ico|opengraph-image|.*\\..*).*)"],
+    // gate page routes only — skip api, next internals, meta images, and files
+    matcher: ["/((?!api|_next|favicon.ico|icon|opengraph-image|.*\\..*).*)"],
 };

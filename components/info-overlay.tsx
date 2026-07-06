@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { about, contact, resume } from "@/data/projects";
 import { MacWindowFrame, TrafficLights } from "@/components/mac-window";
 
@@ -14,13 +15,15 @@ export type InfoKind = "contacts" | "resume";
 function ContactsBody() {
     return (
         <div className="flex flex-col items-center px-7 py-6">
-            <div className="flex size-16 items-center justify-center rounded-full bg-gradient-to-b from-[#9ba1a9] to-[#7c828b] text-[22px] font-semibold text-white">
-                LH
-            </div>
+            <Image
+                src="/objects/headshot.jpg"
+                alt={about.portraitAlt}
+                width={380}
+                height={380}
+                className="size-16 rounded-full object-cover"
+            />
             <h2 className="mt-3 text-[17px] font-bold text-black/85">{about.name}</h2>
-            <p className="text-[12px] text-black/45">
-                {about.headline} — {about.studio}
-            </p>
+            <p className="text-[12px] text-black/45">{about.headline}</p>
 
             <dl className="mt-5 w-full border-t border-black/10">
                 {[

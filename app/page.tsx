@@ -7,6 +7,7 @@ import { Desk } from "@/components/desk";
 import { MenuBar } from "@/components/menu-bar";
 import { FinderWindow } from "@/components/finder-window";
 import { NoteWindow } from "@/components/note-window";
+import { PdfWindow } from "@/components/pdf-window";
 import { ProjectOverlay } from "@/components/project-overlay";
 import { InfoOverlay, type InfoKind } from "@/components/info-overlay";
 
@@ -14,7 +15,8 @@ type Modal =
     | { type: "project"; slug: string }
     | { type: "info"; kind: InfoKind }
     | { type: "finder"; section: "work" | "ideas" }
-    | { type: "note" };
+    | { type: "note" }
+    | { type: "pdf" };
 interface HistoryState {
     modal: Modal | null;
 }
@@ -90,6 +92,11 @@ export default function Home() {
                     triggerRef.current = trigger;
                     push({ modal: { type: "note" } });
                     break;
+                case "pdf":
+                    if (current?.type === "pdf") return;
+                    triggerRef.current = trigger;
+                    push({ modal: { type: "pdf" } });
+                    break;
                 case "overlay":
                     if (current?.type === "info" && current.kind === action.kind) return;
                     triggerRef.current = trigger;
@@ -136,6 +143,7 @@ export default function Home() {
                     />
                 )}
                 {modal?.type === "note" && <NoteWindow key="note" onClose={goBack} />}
+                {modal?.type === "pdf" && <PdfWindow key="pdf" onClose={goBack} />}
                 {modal?.type === "info" && (
                     <InfoOverlay key={modal.kind} kind={modal.kind} onClose={goBack} />
                 )}

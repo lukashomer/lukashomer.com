@@ -14,32 +14,12 @@ import { DesktopIcon } from "@/components/desktop-icon";
  *
  *   greeting  x69.07  y591.96  (57.521px SF Pro Text, tracking 1.1504)
  *   jaaj 1    x1009   y71.05   w466.53 h828.947
- *   shadows   x1091.32 y783.96 / x1248.89 y780.99  w183.181 h94.437 rot −14.58°
  *   icons     aboutme x35 y157.95 · myworks x802.12 y60
  *             rejected x946.03 y107.95 · contacts x820.05 y226.95  (w125.949)
  */
 
 const APPLE_FONT =
     '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif';
-
-/** One of the two blurred-ellipse ground shadows, geometry per Figma. */
-function GroundShadow({ left, top }: { left: string; top: string }) {
-    return (
-        <div
-            aria-hidden="true"
-            className="absolute flex items-center justify-center"
-            style={{ left, top, width: "39.265%", height: "11.392%" }}
-        >
-            <div className="relative flex-none rotate-[-14.58deg]" style={{ width: "95.964%", height: "54.916%" }}>
-                <div className="absolute inset-[-38.56%_-11.38%]">
-                    {/* Figma-exported SVG (gradient ellipse + gaussian blur); stretched like the original */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/objects/shadow.svg" alt="" className="block size-full max-w-none" />
-                </div>
-            </div>
-        </div>
-    );
-}
 
 export function Desk({
     onCharacterClick,
@@ -62,9 +42,6 @@ export function Desk({
 
     const characterFigure = (
         <>
-            {/* shadows sit behind the figure, tracking its box */}
-            <GroundShadow left="17.645%" top="86.005%" />
-            <GroundShadow left="51.42%" top="85.643%" />
             <span className="relative block">
                 <Image
                     src={desk.character.src}
@@ -120,7 +97,7 @@ export function Desk({
                 {greeting}
             </motion.p>
 
-            {/* Character (jaaj 1) with its two blurred ground shadows */}
+            {/* Character (jaaj 1) */}
             <motion.button
                 type="button"
                 aria-haspopup="dialog"

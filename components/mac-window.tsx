@@ -23,12 +23,12 @@ export function TrafficLights({
         "absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-100 ease-linear group-hover/lights:opacity-100";
 
     return (
-        <div className="group/lights flex items-center gap-2">
+        <div className="group/lights flex items-center gap-[9px]">
             <button
                 type="button"
                 onClick={onClose}
                 aria-label="Close window"
-                className="relative size-3 rounded-full border border-[#e0443e] bg-[#ff5f57] transition duration-100 ease-linear active:brightness-90"
+                className="relative size-3.5 rounded-full border-[0.5px] border-black/10 bg-[#ff736a] transition duration-100 ease-linear active:brightness-90"
             >
                 <span className={`${symbolClass} text-[#750000]`} aria-hidden="true">
                     <svg width="6" height="6" viewBox="0 0 6 6" fill="none">
@@ -38,7 +38,7 @@ export function TrafficLights({
             </button>
             <span
                 aria-hidden="true"
-                className="relative size-3 rounded-full border border-[#dea123] bg-[#febc2e]"
+                className="relative size-3.5 rounded-full border-[0.5px] border-black/10 bg-[#febc2e]"
             >
                 <span className={`${symbolClass} text-[#995700]`}>
                     <svg width="8" height="2" viewBox="0 0 8 2" fill="none">
@@ -50,7 +50,7 @@ export function TrafficLights({
                 type="button"
                 onClick={onZoom}
                 aria-label="Zoom window"
-                className="relative size-3 rounded-full border border-[#1aab29] bg-[#28c840] transition duration-100 ease-linear active:brightness-90"
+                className="relative size-3.5 rounded-full border-[0.5px] border-black/10 bg-[#19c332] transition duration-100 ease-linear active:brightness-90"
             >
                 <span className={`${symbolClass} text-[#006500]`} aria-hidden="true">
                     {/* fullscreen triangles */}
@@ -101,7 +101,7 @@ export function MacWindowFrame({
             dragControls={controls}
             dragListener={false}
             dragMomentum={false}
-            className={`fixed z-[90] overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_30px_90px_-20px_rgba(0,0,0,0.4)] outline-none ${className}`}
+            className={`fixed z-[90] overflow-hidden rounded-[26px] bg-white shadow-[0_0_0_1px_rgba(0,0,0,0.23),0_16px_48px_0_rgba(0,0,0,0.35)] outline-none ${className}`}
             style={{ fontFamily: APPLE_FONT }}
             initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 10 }}
             animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}
