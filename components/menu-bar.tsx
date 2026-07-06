@@ -39,31 +39,6 @@ function AppleLogo() {
     );
 }
 
-const STATUS_ICONS = [
-    // wifi
-    <svg key="wifi" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M1.7 6C5.2 2.9 10.8 2.9 14.3 6M3.9 8.5c2.4-2.1 5.8-2.1 8.2 0M6.1 11c1.1-1 2.7-1 3.8 0" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <circle cx="8" cy="13.2" r="0.9" fill="currentColor" />
-    </svg>,
-    // magnifyingglass
-    <svg key="search" width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-        <circle cx="6.5" cy="6.5" r="4.6" stroke="currentColor" strokeWidth="1.4" />
-        <path d="M10 10l3.4 3.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-    </svg>,
-    // person.crop.circle
-    <svg key="person" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <circle cx="8" cy="8" r="6.6" stroke="currentColor" strokeWidth="1.4" />
-        <circle cx="8" cy="6.4" r="2" stroke="currentColor" strokeWidth="1.3" />
-        <path d="M3.9 12.8c.9-1.9 2.4-2.9 4.1-2.9s3.2 1 4.1 2.9" stroke="currentColor" strokeWidth="1.3" />
-    </svg>,
-    // switch.2
-    <svg key="switches" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M1.5 5h13M1.5 11h13" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-        <circle cx="5.5" cy="5" r="2.1" fill="white" stroke="currentColor" strokeWidth="1.4" />
-        <circle cx="10.5" cy="11" r="2.1" fill="white" stroke="currentColor" strokeWidth="1.4" />
-    </svg>,
-];
-
 export function MenuBar({ onAction }: { onAction: (action: NavAction) => void }) {
     const time = useSyncExternalStore(subscribeClock, formatMenuTime, () => "Mon Jun 10 9:41 AM");
 
@@ -119,11 +94,6 @@ export function MenuBar({ onAction }: { onAction: (action: NavAction) => void })
                 </nav>
 
                 <div className="flex items-center text-black">
-                    {STATUS_ICONS.map((icon, i) => (
-                        <span key={i} className="hidden rounded-[4px] px-[11px] py-1 md:block" aria-hidden="true">
-                            {icon}
-                        </span>
-                    ))}
                     <span
                         className="rounded-[4px] px-[11px] py-1 text-[13px] leading-4 font-semibold whitespace-nowrap"
                         suppressHydrationWarning

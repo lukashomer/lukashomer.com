@@ -79,7 +79,7 @@ export function ProjectOverlay({
                     {project.images.slice(0, 4).map((image, i) => (
                         <div
                             key={image.src}
-                            className={`relative overflow-hidden rounded-[8px] ring-1 ring-black/10 ${
+                            className={`relative overflow-hidden rounded-[6px] ring-1 ring-black/10 ${
                                 i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-[4/3]"
                             }`}
                         >

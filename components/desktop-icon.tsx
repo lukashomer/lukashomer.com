@@ -49,7 +49,7 @@ export function DesktopIcon({
             </span>
             <span
                 // macOS desktop selection: label becomes a blue pill on focus
-                className={`-mt-0.5 rounded-[5px] px-1.5 leading-[1.3] font-medium tracking-[0.02em] text-black group-focus-visible:bg-[#2962d9] group-focus-visible:text-white ${
+                className={`-mt-0.5 rounded-[4px] px-1.5 leading-[1.3] font-medium tracking-[0.02em] text-black group-focus-visible:bg-[#2962d9] group-focus-visible:text-white ${
                     mobile ? "text-[13px]" : "text-[clamp(11px,1vw,15px)]"
                 }`}
             >

@@ -73,7 +73,7 @@ export function MacWindowFrame({
             dragControls={controls}
             dragListener={false}
             dragMomentum={false}
-            className={`fixed z-[90] overflow-hidden rounded-[26px] bg-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_30px_90px_-20px_rgba(0,0,0,0.4)] outline-none ${className}`}
+            className={`fixed z-[90] overflow-hidden rounded-[12px] bg-white shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_30px_90px_-20px_rgba(0,0,0,0.4)] outline-none ${className}`}
             style={{ fontFamily: APPLE_FONT }}
             initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.96, y: 10 }}
             animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 }}

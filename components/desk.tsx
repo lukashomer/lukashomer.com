@@ -65,11 +65,7 @@ export function Desk({
             {/* shadows sit behind the figure, tracking its box */}
             <GroundShadow left="17.645%" top="86.005%" />
             <GroundShadow left="51.42%" top="85.643%" />
-            <motion.span
-                className="relative block"
-                animate={reduced ? undefined : { y: [0, -3, 0, 3, 0] }}
-                transition={reduced ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <span className="relative block">
                 <Image
                     src={desk.character.src}
                     alt=""
@@ -79,7 +75,7 @@ export function Desk({
                     sizes="(max-width: 768px) 70vw, 31vw"
                     className="h-auto w-full [image-rendering:pixelated]"
                 />
-            </motion.span>
+            </span>
         </>
     );
 

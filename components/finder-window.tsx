@@ -91,7 +91,7 @@ export function FinderWindow({
                 className="hidden shrink-0 p-3 pr-0 sm:block"
                 onPointerDown={(e) => startDrag.current(e)}
             >
-                <div className="flex h-full w-[208px] flex-col rounded-[16px] bg-[#f8f8f8] shadow-[0_0_0_0.5px_rgba(0,0,0,0.08),0_4px_18px_rgba(0,0,0,0.08)]">
+                <div className="flex h-full w-[208px] flex-col rounded-[10px] bg-[#f8f8f8] shadow-[0_0_0_0.5px_rgba(0,0,0,0.08),0_4px_18px_rgba(0,0,0,0.08)]">
                     <div className="flex items-center justify-between px-4 pt-4 pb-5">
                         <span onPointerDown={(e) => e.stopPropagation()}>
                             <TrafficLights onClose={onClose} onZoom={() => setZoomed((z) => !z)} />
@@ -111,7 +111,7 @@ export function FinderWindow({
                                 onClick={() => setSection(id)}
                                 onPointerDown={(e) => e.stopPropagation()}
                                 aria-current={section === id ? "true" : undefined}
-                                className={`flex items-center gap-2 rounded-[8px] px-2 py-1 text-left transition-colors duration-100 ease-linear ${
+                                className={`flex items-center gap-2 rounded-[6px] px-2 py-1 text-left transition-colors duration-100 ease-linear ${
                                     section === id ? "bg-black/10" : "hover:bg-black/5"
                                 }`}
                             >
@@ -138,7 +138,7 @@ export function FinderWindow({
                         onClick={onClose}
                         onPointerDown={(e) => e.stopPropagation()}
                         aria-label="Back to desktop"
-                        className="flex size-8 items-center justify-center rounded-full text-black/75 transition-colors duration-100 ease-linear hover:bg-black/5 hover:text-black"
+                        className="flex size-8 items-center justify-center rounded-[6px] text-black/75 transition-colors duration-100 ease-linear hover:bg-black/5 hover:text-black"
                     >
                         <svg width="9" height="15" viewBox="0 0 9 15" fill="none" aria-hidden="true">
                             <path d="M7.5 1.5l-6 6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -154,7 +154,7 @@ export function FinderWindow({
                     <div className="ml-auto flex items-center gap-2.5">
                         {/* glass tool pill */}
                         <div
-                            className="hidden items-center rounded-[11px] bg-white px-1 py-1 text-black/60 shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_4px_rgba(0,0,0,0.1)] lg:flex"
+                            className="hidden items-center rounded-[8px] bg-white px-1 py-1 text-black/60 shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_4px_rgba(0,0,0,0.1)] lg:flex"
                             aria-hidden="true"
                         >
                             {TOOL_GLYPHS.map((glyph, i) => (
@@ -165,7 +165,7 @@ export function FinderWindow({
                         </div>
                         {/* compose button */}
                         <span
-                            className="hidden size-8 items-center justify-center rounded-[11px] bg-white text-black/60 shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_4px_rgba(0,0,0,0.1)] lg:flex"
+                            className="hidden size-8 items-center justify-center rounded-[8px] bg-white text-black/60 shadow-[0_0_0_0.5px_rgba(0,0,0,0.12),0_1px_4px_rgba(0,0,0,0.1)] lg:flex"
                             aria-hidden="true"
                         >
                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
@@ -173,7 +173,7 @@ export function FinderWindow({
                             </svg>
                         </span>
                         {/* search pill */}
-                        <div className="hidden h-8 w-44 items-center gap-1.5 rounded-[11px] bg-[#eeeeee] px-2.5 text-black/40 md:flex">
+                        <div className="hidden h-8 w-44 items-center gap-1.5 rounded-[8px] bg-[#eeeeee] px-2.5 text-black/40 md:flex">
                             <svg width="12" height="12" viewBox="0 0 15 15" fill="none" aria-hidden="true">
                                 <circle cx="6.5" cy="6.5" r="4.6" stroke="currentColor" strokeWidth="1.4" />
                                 <path d="M10 10l3.4 3.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
@@ -207,7 +207,7 @@ export function FinderWindow({
                                         setSelected(project.slug);
                                         onOpenProject(project, e.currentTarget);
                                     }}
-                                    className={`flex w-full items-center gap-3 rounded-[6px] px-2.5 py-[3px] text-left transition-colors duration-100 ease-linear ${
+                                    className={`flex w-full items-center gap-3 rounded-[5px] px-2.5 py-[3px] text-left transition-colors duration-100 ease-linear ${
                                         isSelected
                                             ? "bg-[#2962d9] text-white"
                                             : i % 2 === 0
