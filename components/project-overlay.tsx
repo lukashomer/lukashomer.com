@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { contact, type Project } from "@/data/projects";
+import type { Project } from "@/data/projects";
 import { MacWindowFrame, TrafficLights } from "@/components/mac-window";
 
 /**
@@ -18,15 +18,19 @@ export function ProjectOverlay({
 }) {
     const [zoomed, setZoomed] = useState(false);
     const [email, setEmail] = useState("");
+    const [notifyState, setNotifyState] = useState<"idle" | "saving" | "done" | "error">("idle");
     const startDrag = useRef<(e: React.PointerEvent) => void>(() => {});
 
-    const notify = (e: React.FormEvent) => {
+    const notify = async (e: React.FormEvent) => {
         e.preventDefault();
-        const subject = encodeURIComponent(`Notify me: ${project.title}`);
-        const body = encodeURIComponent(
-            `Hi Lukas, let me know when the ${project.title} case study is live.\n\n— ${email}`,
-        );
-        window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+        if (notifyState === "saving") return;
+        setNotifyState("saving");
+        const res = await fetch("/api/notify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, project: project.slug }),
+        }).catch(() => null);
+        setNotifyState(res?.ok ? "done" : "error");
     };
 
     return (
@@ -99,23 +103,35 @@ export function ProjectOverlay({
                         Visuals for this one are still being polished. Leave your email and
                         I’ll let you know the moment it’s live.
                     </p>
-                    <form className="mt-4 flex w-full max-w-[320px] gap-2" onSubmit={notify}>
-                        <input
-                            type="email"
-                            required
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="you@email.com"
-                            aria-label="Your email"
-                            className="h-8 min-w-0 flex-1 rounded-[6px] bg-white px-3 text-[13px] text-black/85 shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] placeholder:text-black/30 focus:outline-none"
-                        />
-                        <button
-                            type="submit"
-                            className="h-8 shrink-0 rounded-[6px] bg-[#2962d9] px-3 text-[13px] font-medium text-white shadow-[inset_0_0.5px_0_rgba(255,255,255,0.35),0_1px_2px_rgba(0,0,0,0.15)] transition duration-100 ease-linear hover:brightness-105"
-                        >
-                            Notify me
-                        </button>
-                    </form>
+                    {notifyState === "done" ? (
+                        <p className="mt-4 text-[13px] font-medium text-[#1a9338]" role="status">
+                            ✓ You’re on the list — I’ll be in touch.
+                        </p>
+                    ) : (
+                        <form className="mt-4 flex w-full max-w-[320px] gap-2" onSubmit={notify}>
+                            <input
+                                type="email"
+                                required
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="you@email.com"
+                                aria-label="Your email"
+                                className="h-8 min-w-0 flex-1 rounded-[6px] bg-white px-3 text-[13px] text-black/85 shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] placeholder:text-black/30 focus:outline-none"
+                            />
+                            <button
+                                type="submit"
+                                disabled={notifyState === "saving"}
+                                className="h-8 shrink-0 rounded-[6px] bg-[#2962d9] px-3 text-[13px] font-medium text-white shadow-[inset_0_0.5px_0_rgba(255,255,255,0.35),0_1px_2px_rgba(0,0,0,0.15)] transition duration-100 ease-linear hover:brightness-105 disabled:opacity-60"
+                            >
+                                {notifyState === "saving" ? "Saving…" : "Notify me"}
+                            </button>
+                        </form>
+                    )}
+                    {notifyState === "error" && (
+                        <p className="mt-2 text-[12px] text-[#c93b2f]" role="status">
+                            Something went wrong — try again in a moment.
+                        </p>
+                    )}
                 </div>
 
                 {project.link && (
