@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { desk, desktopIcons, type NavAction } from "@/data/projects";
@@ -29,6 +29,8 @@ export function Desk({
     onIconActivate: (action: NavAction, trigger: HTMLElement | null) => void;
 }) {
     const reduced = useReducedMotion();
+    const constraintsRef = useRef<HTMLElement | null>(null);
+    const charDragging = useRef(false);
 
     const greeting = desk.greeting.map((segment, i) =>
         segment.bold ? (
@@ -50,6 +52,7 @@ export function Desk({
                     height={desk.character.height}
                     priority
                     sizes="(max-width: 768px) 70vw, 31vw"
+                    draggable={false}
                     className="h-auto w-full [image-rendering:pixelated]"
                 />
             </span>
@@ -58,6 +61,7 @@ export function Desk({
 
     return (
         <motion.section
+            ref={constraintsRef}
             aria-label="Desktop"
             className="relative min-h-full md:h-full"
             initial={{ opacity: 0 }}
@@ -77,7 +81,7 @@ export function Desk({
                             top: `calc(${item.position.y}% + 0.6%)`,
                         }}
                     >
-                        <DesktopIcon item={item} order={i} onActivate={onIconActivate} />
+                        <DesktopIcon item={item} order={i} constraintsRef={constraintsRef} onActivate={onIconActivate} />
                     </div>
                 ))}
             </div>
@@ -98,18 +102,33 @@ export function Desk({
             </motion.p>
 
             {/* Character (jaaj 1) */}
-            <motion.button
-                type="button"
+            <motion.div
+                role="button"
+                tabIndex={0}
                 aria-haspopup="dialog"
                 aria-label={`${desk.character.alt} — open about`}
-                onClick={(e) => onCharacterClick(e.currentTarget)}
-                className="relative mx-auto mt-8 block w-[70%] max-w-[340px] md:absolute md:left-[66.733%] md:top-[7.235%] md:mx-0 md:mt-0 md:w-[30.855%] md:max-w-none"
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onCharacterClick(e.currentTarget);
+                    }
+                }}
+                drag
+                dragConstraints={constraintsRef}
+                dragMomentum={false}
+                onDragStart={() => (charDragging.current = true)}
+                onDragEnd={() => setTimeout(() => (charDragging.current = false), 0)}
+                onTap={(e) => {
+                    if (charDragging.current) return;
+                    onCharacterClick(e.currentTarget as HTMLElement | null);
+                }}
+                className="relative mx-auto mt-8 block w-[70%] max-w-[340px] cursor-grab select-none active:cursor-grabbing md:absolute md:left-[66.733%] md:top-[7.235%] md:mx-0 md:mt-0 md:w-[30.855%] md:max-w-none"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             >
                 {characterFigure}
-            </motion.button>
+            </motion.div>
 
             {/* spacer so the mobile flow breathes at the bottom */}
             <div className="h-16 md:hidden" aria-hidden="true" />

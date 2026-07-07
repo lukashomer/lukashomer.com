@@ -65,13 +65,26 @@ body {
 }
 input:focus-visible,
 textarea:focus-visible,
-select:focus-visible {
+select:focus-visible,
+[tabindex="-1"]:focus-visible {
     outline: none;
+}
+
+/* indeterminate loading bar for TBD case studies */
+@keyframes loading-slide {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(420%); }
 }
 
 /* no gray/blue tap flash on touch devices */
 html {
     -webkit-tap-highlight-color: transparent;
+}
+
+/* images never start native drag-and-drop (it cancels pointer gestures) */
+img {
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .text-micro {

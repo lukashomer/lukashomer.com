@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { Project } from "@/data/projects";
-import { ProjectThumb } from "@/components/project-thumb";
+import { contact, type Project } from "@/data/projects";
 import { MacWindowFrame, TrafficLights } from "@/components/mac-window";
 
 /**
@@ -18,7 +17,17 @@ export function ProjectOverlay({
     onClose: () => void;
 }) {
     const [zoomed, setZoomed] = useState(false);
+    const [email, setEmail] = useState("");
     const startDrag = useRef<(e: React.PointerEvent) => void>(() => {});
+
+    const notify = (e: React.FormEvent) => {
+        e.preventDefault();
+        const subject = encodeURIComponent(`Notify me: ${project.title}`);
+        const body = encodeURIComponent(
+            `Hi Lukas, let me know when the ${project.title} case study is live.\n\n— ${email}`,
+        );
+        window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+    };
 
     return (
         <MacWindowFrame
@@ -75,22 +84,38 @@ export function ProjectOverlay({
                     </div>
                 </dl>
 
-                <div className="mt-6 grid grid-cols-2 gap-2.5">
-                    {project.images.slice(0, 4).map((image, i) => (
+                {/* case study TBD — content is on the way */}
+                <div className="mt-6 flex flex-col items-center rounded-[10px] bg-[#f7f7f7] px-6 py-8 text-center">
+                    <div className="h-1 w-44 overflow-hidden rounded-full bg-black/10">
                         <div
-                            key={image.src}
-                            className={`relative overflow-hidden rounded-[6px] ring-1 ring-black/10 ${
-                                i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-[4/3]"
-                            }`}
+                            className="h-full w-1/3 rounded-full bg-[#2962d9]"
+                            style={{ animation: "loading-slide 1.6s ease-in-out infinite" }}
+                        />
+                    </div>
+                    <p className="mt-4 text-[13px] font-semibold text-black/85">
+                        Case study is loading…
+                    </p>
+                    <p className="mt-1 max-w-[38ch] text-[12px] leading-relaxed text-black/50">
+                        Visuals for this one are still being polished. Leave your email and
+                        I’ll let you know the moment it’s live.
+                    </p>
+                    <form className="mt-4 flex w-full max-w-[320px] gap-2" onSubmit={notify}>
+                        <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="you@email.com"
+                            aria-label="Your email"
+                            className="h-8 min-w-0 flex-1 rounded-[6px] bg-white px-3 text-[13px] text-black/85 shadow-[0_0_0_0.5px_rgba(0,0,0,0.15)] placeholder:text-black/30 focus:outline-none"
+                        />
+                        <button
+                            type="submit"
+                            className="h-8 shrink-0 rounded-[6px] bg-[#2962d9] px-3 text-[13px] font-medium text-white shadow-[inset_0_0.5px_0_rgba(255,255,255,0.35),0_1px_2px_rgba(0,0,0,0.15)] transition duration-100 ease-linear hover:brightness-105"
                         >
-                            <ProjectThumb
-                                project={project}
-                                src={image.src}
-                                alt={image.alt}
-                                sizes="(max-width: 768px) 100vw, 720px"
-                            />
-                        </div>
-                    ))}
+                            Notify me
+                        </button>
+                    </form>
                 </div>
 
                 {project.link && (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type RefObject } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import type { DesktopIconDef } from "@/data/projects";
@@ -18,24 +18,44 @@ export function DesktopIcon({
     item,
     order,
     mobile = false,
+    constraintsRef,
     onActivate,
 }: {
     item: DesktopIconDef;
     order: number;
     mobile?: boolean;
+    constraintsRef?: RefObject<HTMLElement | null>;
     onActivate: (action: DesktopIconDef["action"], trigger: HTMLElement | null) => void;
 }) {
     const reduced = useReducedMotion();
     const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
+    // suppress the tap that fires on the same pointer-up that ends a drag
+    const dragging = useRef(false);
     const hasContextMenu = item.id === "resume";
 
     return (
         <>
-            <motion.button
-                type="button"
+            <motion.div
+                role="button"
+                tabIndex={0}
                 aria-haspopup={item.action.type === "overlay" ? "dialog" : undefined}
                 aria-label={item.label}
-                onClick={(e) => onActivate(item.action, e.currentTarget)}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onActivate(item.action, e.currentTarget);
+                    }
+                }}
+                drag={!mobile}
+                dragConstraints={mobile ? undefined : constraintsRef}
+                dragMomentum={false}
+                whileDrag={reduced ? undefined : { scale: 1.05 }}
+                onDragStart={() => (dragging.current = true)}
+                onDragEnd={() => setTimeout(() => (dragging.current = false), 0)}
+                onTap={(e) => {
+                    if (dragging.current) return;
+                    onActivate(item.action, e.currentTarget as HTMLElement | null);
+                }}
                 onContextMenu={
                     hasContextMenu
                         ? (e) => {
@@ -44,10 +64,10 @@ export function DesktopIcon({
                           }
                         : undefined
                 }
-                className="group flex w-full flex-col items-center focus-visible:outline-none"
+                className="group flex w-full cursor-default flex-col items-center select-none focus-visible:outline-none"
                 style={{ fontFamily: APPLE_FONT }}
-                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ type: "spring", stiffness: 280, damping: 26, delay: 0.15 + order * 0.06 }}
                 whileHover={reduced || mobile ? undefined : { scale: 1.02 }}
                 whileTap={reduced ? undefined : { scale: 0.97 }}
@@ -58,6 +78,7 @@ export function DesktopIcon({
                         alt=""
                         fill
                         sizes={mobile ? "96px" : "7vw"}
+                        draggable={false}
                         className="object-contain [image-rendering:pixelated]"
                     />
                 </span>
@@ -69,7 +90,7 @@ export function DesktopIcon({
                 >
                     {item.label}
                 </span>
-            </motion.button>
+            </motion.div>
 
             {/* macOS context menu */}
             {menu && (
