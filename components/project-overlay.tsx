@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import type { Project } from "@/data/projects";
-import { ProjectThumb } from "@/components/project-thumb";
 import { MacWindowFrame, TrafficLights } from "@/components/mac-window";
 
 /**
@@ -90,21 +90,17 @@ export function ProjectOverlay({
                 </dl>
 
                 {project.contentReady ? (
-                    <div className="mt-6 grid grid-cols-2 gap-2.5">
-                        {project.images.slice(0, 4).map((image, i) => (
-                            <div
+                    <div className="mt-6 flex flex-col gap-2.5">
+                        {project.images.map((image) => (
+                            <Image
                                 key={image.src}
-                                className={`relative overflow-hidden rounded-[6px] ring-1 ring-black/10 ${
-                                    i === 0 ? "col-span-2 aspect-[1380/942]" : "aspect-[1380/942]"
-                                }`}
-                            >
-                                <ProjectThumb
-                                    project={project}
-                                    src={image.src}
-                                    alt={image.alt}
-                                    sizes="(max-width: 768px) 100vw, 720px"
-                                />
-                            </div>
+                                src={image.src}
+                                alt={image.alt}
+                                width={1600}
+                                height={1000}
+                                sizes="(max-width: 768px) 100vw, 720px"
+                                className="h-auto w-full rounded-[6px] ring-1 ring-black/10"
+                            />
                         ))}
                     </div>
                 ) : (
