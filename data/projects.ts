@@ -97,7 +97,7 @@ export const projects: Project[] = [
         title: "Youdare",
         label: "Youdare — Co-Founder · CMO",
         description:
-            "A startup I co-founded — designed the app screens, built several landing pages, and led marketing initiatives across the CEE region and the USA.",
+            "Youdare is a social media platform where users create and crowdfund dares — if completed, the dared person earns the money. The result: a unique feed of daring, one-of-a-kind videos. As a co-founder, I designed the app screens, developed several landing pages, and spearheaded marketing initiatives in both the CEE region and the USA.",
         role: "Co-Founder · CMO",
         stack: ["Figma", "Landing pages", "Growth"],
         images: [
