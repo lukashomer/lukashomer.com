@@ -32,15 +32,20 @@ export function Desk({
     const constraintsRef = useRef<HTMLElement | null>(null);
     const charDragging = useRef(false);
 
-    const greeting = desk.greeting.map((segment, i) =>
-        segment.bold ? (
-            <strong key={i} className="font-bold">
-                {segment.text}
-            </strong>
-        ) : (
-            <Fragment key={i}>{segment.text}</Fragment>
-        ),
-    );
+    // Greeting split into lines/words for the keynote-style staggered reveal.
+    const greetingLines = (() => {
+        const lines: { text: string; bold: boolean }[][] = [[]];
+        for (const segment of desk.greeting) {
+            segment.text.split("\n").forEach((part, pi) => {
+                if (pi > 0) lines.push([]);
+                for (const word of part.split(" ")) {
+                    if (word) lines[lines.length - 1].push({ text: word, bold: !!segment.bold });
+                }
+            });
+        }
+        return lines;
+    })();
+    let wordIndex = 0;
 
     const characterFigure = (
         <>
@@ -91,15 +96,36 @@ export function Desk({
                 ))}
             </div>
 
-            {/* Greeting — SF Pro, mixed regular/bold, exact Figma position */}
-            <motion.p
-                initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-                className="px-6 pt-10 text-[26px] leading-[1.2] tracking-[0.02em] whitespace-pre-line text-black md:absolute md:left-[4.568%] md:top-[60.281%] md:px-0 md:pt-0 md:text-[3.8043vw] md:whitespace-pre"
-            >
-                {greeting}
-            </motion.p>
+            {/* Greeting — SF Pro, exact Figma position, word-by-word reveal */}
+            <h1 className="px-6 pt-10 text-[26px] leading-[1.2] font-normal tracking-[0.02em] text-black md:absolute md:left-[4.568%] md:top-[60.281%] md:px-0 md:pt-0 md:text-[3.8043vw]">
+                {greetingLines.map((line, li) => (
+                    <span key={li} className="block">
+                        {line.map((word, wi) => {
+                            const delay = 0.2 + wordIndex++ * 0.055;
+                            return (
+                                <Fragment key={wi}>
+                                    <motion.span
+                                        className={`inline-block ${word.bold ? "font-bold" : ""}`}
+                                        initial={
+                                            reduced
+                                                ? { opacity: 0 }
+                                                : { opacity: 0, y: 14, filter: "blur(8px)" }
+                                        }
+                                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                        transition={{
+                                            duration: 0.55,
+                                            ease: [0.2, 0.6, 0.2, 1],
+                                            delay,
+                                        }}
+                                    >
+                                        {word.text}
+                                    </motion.span>{" "}
+                                </Fragment>
+                            );
+                        })}
+                    </span>
+                ))}
+            </h1>
 
             {/* Character (jaaj 1) */}
             <motion.div

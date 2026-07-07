@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import { projects, type NavAction, type Project } from "@/data/projects";
 import { Desk } from "@/components/desk";
+import { WelcomeNotification } from "@/components/mac-notification";
 import { MenuBar } from "@/components/menu-bar";
 import { FinderWindow } from "@/components/finder-window";
 import { NoteWindow } from "@/components/note-window";
@@ -125,6 +126,7 @@ export default function Home() {
     return (
         <div className="relative min-h-dvh md:h-dvh md:overflow-hidden">
             <MenuBar onAction={handleNavAction} />
+            <WelcomeNotification />
 
             <main className="relative md:h-full">
                 <Desk

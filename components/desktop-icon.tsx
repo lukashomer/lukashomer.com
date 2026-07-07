@@ -64,7 +64,7 @@ export function DesktopIcon({
                           }
                         : undefined
                 }
-                className="group flex w-full cursor-default flex-col items-center select-none focus-visible:outline-none"
+                className="group flex w-full cursor-pointer flex-col items-center select-none focus-visible:outline-none"
                 style={{ fontFamily: APPLE_FONT }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
