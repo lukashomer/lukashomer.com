@@ -33,6 +33,8 @@ export interface Project {
     images: ProjectImage[];
     /** Real 'Date Modified' shown in the Finder list. */
     modified: string;
+    /** True once real case-study images exist — shows the grid instead of the TBD panel. */
+    contentReady?: boolean;
     link?: { href: string; label: string };
     position: { x: number; y: number };
     rotation: number;
@@ -99,9 +101,11 @@ export const projects: Project[] = [
         role: "Co-Founder · CMO",
         stack: ["Figma", "Landing pages", "Growth"],
         images: [
-            { src: "/projects/youdare/01.jpg", alt: "Youdare — app screens" },
-            { src: "/projects/youdare/02.jpg", alt: "Youdare — landing page" },
+            { src: "/projects/youdare/01.png", alt: "Youdare — app design" },
+            { src: "/projects/youdare/02.png", alt: "Youdare — product screens" },
+            { src: "/projects/youdare/03.png", alt: "Youdare — landing page" },
         ],
+        contentReady: true,
         position: { x: 70, y: 30 },
         rotation: 0,
         size: "md",
@@ -191,13 +195,37 @@ export const projects: Project[] = [
         aspect: "landscape",
     },
 
+    {
+        id: "cemmac",
+        slug: "cemmac",
+        section: "work",
+        index: "08",
+        title: "Cemmac",
+        label: "Cemmac — Corporate Website",
+        description:
+            "UI/UX design for CEMMAC, one of Slovakia’s most modern cement producers — the corporate website from information architecture to the final visual design.",
+        role: "UI/UX Design",
+        stack: ["Figma", "UI/UX", "Web design"],
+        images: [
+            { src: "/projects/cemmac/01.png", alt: "Cemmac — homepage" },
+            { src: "/projects/cemmac/02.png", alt: "Cemmac — content section" },
+        ],
+        contentReady: true,
+        link: { href: "https://www.cemmac.sk/en/", label: "cemmac.sk" },
+        modified: "Mar 12, 2025",
+        position: { x: 70, y: 80 },
+        rotation: 0,
+        size: "md",
+        aspect: "landscape",
+    },
+
     // ——— IDEAS ——————————————————————————————————————————————
     {
         id: "office-management",
         slug: "office-management",
         modified: "Jan 15, 2025",
         section: "ideas",
-        index: "08",
+        index: "09",
         title: "Office Management App",
         label: "Office Management App",
         description:
