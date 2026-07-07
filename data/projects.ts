@@ -207,8 +207,9 @@ export const projects: Project[] = [
         role: "UI/UX Design",
         stack: ["Figma", "UI/UX", "Web design"],
         images: [
-            { src: "/projects/cemmac/01.png", alt: "Cemmac — homepage" },
-            { src: "/projects/cemmac/02.png", alt: "Cemmac — content section" },
+            { src: "/projects/cemmac/01.png", alt: "Cemmac — website design" },
+            { src: "/projects/cemmac/02.png", alt: "Cemmac — page designs" },
+            { src: "/projects/cemmac/03.png", alt: "Cemmac — content section" },
         ],
         contentReady: true,
         link: { href: "https://www.cemmac.sk/en/", label: "cemmac.sk" },
