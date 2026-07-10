@@ -149,7 +149,7 @@ export const projects: Project[] = [
         description:
             "E-commerce plugins for Shoptet and Shopify stores — designed, built, and maintained as products. Small tools with real users, where I do both the product thinking and the engineering.",
         role: "Product · Engineering",
-        stack: ["TypeScript", "React", "Shopify", "Shoptet"],
+        stack: ["Figma", "TypeScript", "React", "Shopify", "Shoptet"],
         images: [
             { src: "/projects/plugdeck/01.jpg", alt: "Plugdeck — plugin storefront" },
             { src: "/projects/plugdeck/02.jpg", alt: "Plugdeck — plugin settings UI" },
@@ -192,7 +192,7 @@ export const projects: Project[] = [
         description:
             "An AI chatbot pipeline for Slovakia's premier coffee company — embeddings, pgvector retrieval, and Slovak-language NLU — plus e-commerce feed work behind the shop.",
         role: "AI engineering · E-commerce",
-        stack: ["PostgreSQL · pgvector", "Embeddings", "Slovak NLU"],
+        stack: ["Figma", "PostgreSQL · pgvector", "Embeddings", "Slovak NLU"],
         images: [
             { src: "/projects/cafepoint/01.png", alt: "Cafepoint — design work" },
             { src: "/projects/cafepoint/02.png", alt: "Cafepoint — e-commerce work" },
@@ -376,7 +376,7 @@ export const resume = {
         "Figma & design systems, Claude Code (AI-assisted development), HTML/CSS/JS, e-commerce themes, Adobe Photoshop & Illustrator",
     experience: [
         {
-            years: "2024 — Present",
+            years: "2023 — Present",
             role: "Senior Product Designer & Design Engineer",
             company: "Simplicity",
         },

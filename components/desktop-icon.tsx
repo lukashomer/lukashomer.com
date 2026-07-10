@@ -79,7 +79,7 @@ export function DesktopIcon({
                         fill
                         sizes={mobile ? "96px" : "7vw"}
                         draggable={false}
-                        className="object-contain [image-rendering:pixelated]"
+                        className="object-contain"
                     />
                 </span>
                 <span

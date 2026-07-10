@@ -17,7 +17,7 @@ export default function NotFound() {
                     alt=""
                     width={70}
                     height={70}
-                    className="size-14 object-contain [image-rendering:pixelated]"
+                    className="size-14 object-contain"
                 />
                 <h1 className="mt-3 text-[15px] font-bold text-black/85">
                     The file can’t be found.

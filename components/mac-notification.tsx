@@ -47,7 +47,7 @@ export function WelcomeNotification() {
                         alt=""
                         width={38}
                         height={38}
-                        className="size-9 shrink-0 object-contain [image-rendering:pixelated]"
+                        className="size-9 shrink-0 object-contain"
                     />
                     <div className="min-w-0 flex-1">
                         <p className="text-[13px] leading-tight font-semibold text-black/85">
