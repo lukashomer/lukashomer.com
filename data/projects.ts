@@ -57,10 +57,12 @@ export const projects: Project[] = [
         role: "Brand · Product UI · Landing page · Stripe integration",
         stack: ["Next.js", "React", "Stripe", "Figma"],
         images: [
-            { src: "/projects/sara-ai/01.jpg", alt: "Sara AI — chat interface" },
-            { src: "/projects/sara-ai/02.jpg", alt: "Sara AI — landing page" },
-            { src: "/projects/sara-ai/03.jpg", alt: "Sara AI — brand elements" },
+            { src: "/projects/sara-ai/01.png", alt: "Sara AI — chat greeting card" },
+            { src: "/projects/sara-ai/02.png", alt: "Sara AI — dashboard cards and Pro plan billing" },
+            { src: "/projects/sara-ai/03.png", alt: "Sara AI — product shown on a laptop" },
+            { src: "/projects/sara-ai/04.png", alt: "Sara AI — chat alongside an MLS map and property listings" },
         ],
+        contentReady: true,
         link: { href: "https://sarabroker.com", label: "sarabroker.com" },
         position: { x: 30, y: 30 },
         rotation: 0,
@@ -76,13 +78,16 @@ export const projects: Project[] = [
         title: "Simplicity",
         label: "Simplicity — Product & Engineering",
         description:
-            "Real-estate SaaS where I own the product design end to end and ship it myself — new features, e-commerce themes, landing pages, and marketing assets, designed in Figma and built into production code with AI-assisted development.",
+            "A consumer travel app where I own the product design end to end and ship it myself — trip planning, hotel booking, eSIM, travel insurance, itineraries, and an in-app AI assistant. Designed in Figma and built into production code with AI-assisted development.",
         role: "Senior Product Designer & Design Engineer",
         stack: ["Figma", "React", "TypeScript", "Claude Code"],
         images: [
-            { src: "/projects/simplicity/01.jpg", alt: "Simplicity — product dashboard" },
-            { src: "/projects/simplicity/02.jpg", alt: "Simplicity — design system" },
+            { src: "/projects/simplicity/01.png", alt: "Simplicity — travel app home with categories and destinations" },
+            { src: "/projects/simplicity/02.png", alt: "Simplicity — onboarding, eSIM, and travel insurance flows" },
+            { src: "/projects/simplicity/03.png", alt: "Simplicity — itinerary widgets and booking confirmation" },
+            { src: "/projects/simplicity/04.png", alt: "Simplicity — hotel search and property detail" },
         ],
+        contentReady: true,
         position: { x: 50, y: 30 },
         rotation: 0,
         size: "md",
@@ -149,6 +154,7 @@ export const projects: Project[] = [
             { src: "/projects/plugdeck/01.jpg", alt: "Plugdeck — plugin storefront" },
             { src: "/projects/plugdeck/02.jpg", alt: "Plugdeck — plugin settings UI" },
         ],
+        link: { href: "https://www.plugdeck.co", label: "plugdeck.co" },
         position: { x: 50, y: 60 },
         rotation: 0,
         size: "md",
@@ -169,6 +175,7 @@ export const projects: Project[] = [
         images: [
             { src: "/projects/thedogwod/01.jpg", alt: "Thedogwod — web design" },
         ],
+        link: { href: "https://thedogwod.com", label: "thedogwod.com" },
         position: { x: 70, y: 60 },
         rotation: 0,
         size: "md",
@@ -232,12 +239,15 @@ export const projects: Project[] = [
         title: "Office Management App",
         label: "Office Management App",
         description:
-            "A concept for an office management app — desks, rooms, people, and bookings brought together in one calm overview.",
+            "A concept for a tenant app for a managed office building — parking reservations, meeting-room booking, visitor passes, an amenities directory, and building news, brought together in one calm native home screen.",
         role: "Concept · Product design",
         stack: ["Figma", "Prototyping"],
         images: [
-            { src: "/projects/office-management/01.jpg", alt: "Office management app — overview concept" },
+            { src: "/projects/office-management/01.png", alt: "Office app — parking card, building detail, and venue detail screens" },
+            { src: "/projects/office-management/02.png", alt: "Office app — visitor invitation, booking form, and opening-hours components" },
+            { src: "/projects/office-management/03.png", alt: "Office app — home screen with quick actions, news, and events" },
         ],
+        contentReady: true,
         position: { x: 50, y: 45 },
         rotation: 0,
         size: "md",
@@ -253,7 +263,7 @@ export const about = {
     location: "Bratislava, Slovakia",
     // Positioning statement — refined tone, same meaning.
     statement:
-        "I design products, and then I build them. Seventeen years across product design, design systems, and front-end engineering — currently building AI tools for real estate at Simplicity and Sara, and e-commerce plugins at Plugdeck.",
+        "I design products, and then I build them. Seventeen years across product design, design systems, and front-end engineering — currently building an AI travel app at Simplicity, an AI assistant for real-estate brokers at Sara, and e-commerce plugins at Plugdeck.",
     facts: [
         { label: "Experience", value: "17+ years" },
         { label: "Based", value: "Bratislava, SK" },
@@ -340,13 +350,15 @@ export const desktopIcons: DesktopIconDef[] = [
         action: { type: "finder", section: "ideas" },
         position: { x: 62.57, y: 10.993 },
     },
-    {
-        id: "resume",
-        label: "lukashomercv.pdf",
-        icon: "/desktop/resume.png",
-        action: { type: "pdf" },
-        position: { x: 53.8, y: 40.5 },
-    },
+    // CV PDF hidden for now — restore this icon (and drop the real /public/lukashomercv.pdf)
+    // to bring back the Preview window + right-click download.
+    // {
+    //     id: "resume",
+    //     label: "lukashomercv.pdf",
+    //     icon: "/desktop/resume.png",
+    //     action: { type: "pdf" },
+    //     position: { x: 53.8, y: 40.5 },
+    // },
     {
         id: "contacts",
         label: "contacts",

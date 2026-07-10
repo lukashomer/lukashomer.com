@@ -103,7 +103,7 @@ export function ProjectOverlay({
                             />
                         ))}
                     </div>
-                ) : (
+                ) : project.link ? null : (
                 <div className="mt-6 flex flex-col items-center rounded-[10px] bg-[#f7f7f7] px-6 py-8 text-center">
                     <div className="h-1 w-44 overflow-hidden rounded-full bg-black/10">
                         <div
@@ -155,9 +155,13 @@ export function ProjectOverlay({
                         href={project.link.href}
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="mt-6 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#2962d9] hover:underline"
+                        className={
+                            project.contentReady
+                                ? "mt-6 inline-flex items-center gap-1.5 text-[13px] font-medium text-[#2962d9] hover:underline"
+                                : "mt-6 inline-flex items-center gap-1.5 rounded-[6px] bg-[#2962d9] px-3.5 py-1.5 text-[13px] font-medium text-white shadow-[inset_0_0.5px_0_rgba(255,255,255,0.35),0_1px_2px_rgba(0,0,0,0.15)] transition duration-100 ease-linear hover:brightness-105"
+                        }
                     >
-                        {project.link.label}
+                        {project.contentReady ? project.link.label : `Visit ${project.link.label}`}
                         <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true">
                             <path d="M1.5 9.5l8-8M3.5 1.5h6v6" stroke="currentColor" strokeWidth="1.5" />
                         </svg>
