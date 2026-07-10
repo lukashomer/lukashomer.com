@@ -76,7 +76,7 @@ export const projects: Project[] = [
         section: "work",
         index: "02",
         title: "Simplicity",
-        label: "Simplicity — Product & Engineering",
+        label: "Simplicity — Travel App",
         description:
             "A consumer travel app where I own the product design end to end and ship it myself — trip planning, hotel booking, eSIM, travel insurance, itineraries, and an in-app AI assistant. Designed in Figma and built into production code with AI-assisted development.",
         role: "Senior Product Designer & Design Engineer",
@@ -100,16 +100,17 @@ export const projects: Project[] = [
         section: "work",
         index: "03",
         title: "Youdare",
-        label: "Youdare — Co-Founder · CMO",
+        label: "Youdare — Social Dares Platform",
         description:
-            "Youdare is a social media platform where users create and crowdfund dares — if completed, the dared person earns the money. The result: a unique feed of daring, one-of-a-kind videos. As a co-founder, I designed the app screens, developed several landing pages, and spearheaded marketing initiatives in both the CEE region and the USA.",
+            "A social platform where users create and crowdfund dares — complete the dare and you earn the money — producing a feed of bold, one-of-a-kind videos. As co-founder, I designed the app, built the landing pages, and led growth marketing across the CEE region and the US.",
         role: "Co-Founder · CMO",
         stack: ["Figma", "Landing pages", "Growth"],
         images: [
-            { src: "/projects/youdare/01.png", alt: "Youdare — app design" },
-            { src: "/projects/youdare/02.png", alt: "Youdare — product screens" },
-            { src: "/projects/youdare/03.png", alt: "Youdare — landing page" },
+            { src: "/projects/youdare/01.png", alt: "Youdare — dare feed and crowdfunding screens" },
+            { src: "/projects/youdare/02.png", alt: "Youdare — creating and funding a dare in the app" },
+            { src: "/projects/youdare/03.png", alt: "Youdare — marketing landing page" },
         ],
+        // TODO: add a real outcome if available (users, campaign reach in CEE/US) and a live link.
         contentReady: true,
         position: { x: 70, y: 30 },
         rotation: 0,
@@ -123,16 +124,18 @@ export const projects: Project[] = [
         section: "work",
         index: "04",
         title: "RealtyScanner",
-        label: "RealtyScanner — Co-Founder · CEO",
+        label: "RealtyScanner — Real-Estate Search",
         description:
-            "A real-estate startup I co-founded and led. I took charge of the UI/UX design and brand — from crafting the logo to establishing the full identity — while steering the product as CEO.",
+            "An AI-powered real-estate platform that surfaces the best listings for each buyer by preference and budget. I co-founded and led it as CEO, owning UI/UX and the full brand — from logo to identity system.",
         role: "Co-Founder · CEO",
         stack: ["Figma", "Brand", "UI/UX"],
         images: [
-            { src: "/projects/realtyscanner/01.png", alt: "RealtyScanner — product UI" },
-            { src: "/projects/realtyscanner/02.png", alt: "RealtyScanner — brand identity" },
+            { src: "/projects/realtyscanner/01.png", alt: "RealtyScanner — property search interface" },
+            { src: "/projects/realtyscanner/02.png", alt: "RealtyScanner — logo and brand identity" },
         ],
         contentReady: true,
+        // TODO: confirm beivo.sk is live, then uncomment to link it.
+        // link: { href: "https://beivo.sk", label: "beivo.sk" },
         position: { x: 30, y: 60 },
         rotation: 0,
         size: "md",
@@ -167,14 +170,15 @@ export const projects: Project[] = [
         section: "work",
         index: "06",
         title: "Thedogwod",
-        label: "Thedogwod",
+        label: "Thedogwod — Brand & E-commerce",
         description:
-            "Design and build work for Thedogwod — brand, web, and e-commerce.",
+            "Brand, website, and online store for Thedogwod, designed and built end to end — from visual identity through the live e-commerce storefront.",
         role: "Design · Development",
         stack: ["Figma", "Web"],
         images: [
-            { src: "/projects/thedogwod/01.jpg", alt: "Thedogwod — web design" },
+            { src: "/projects/thedogwod/01.jpg", alt: "Thedogwod — homepage and storefront design" },
         ],
+        // TODO: add specifics (product category, platform, any results) — this one is still thin.
         link: { href: "https://thedogwod.com", label: "thedogwod.com" },
         position: { x: 70, y: 60 },
         rotation: 0,
@@ -192,11 +196,12 @@ export const projects: Project[] = [
         description:
             "An AI chatbot pipeline for Slovakia's premier coffee company — embeddings, pgvector retrieval, and Slovak-language NLU — plus e-commerce feed work behind the shop.",
         role: "AI engineering · E-commerce",
-        stack: ["Figma", "PostgreSQL · pgvector", "Embeddings", "Slovak NLU"],
+        stack: ["PostgreSQL · pgvector", "Embeddings", "Slovak NLU", "Figma"],
         images: [
-            { src: "/projects/cafepoint/01.png", alt: "Cafepoint — design work" },
-            { src: "/projects/cafepoint/02.png", alt: "Cafepoint — e-commerce work" },
+            { src: "/projects/cafepoint/01.png", alt: "Cafepoint — brand and store design" },
+            { src: "/projects/cafepoint/02.png", alt: "Cafepoint — product feed and shop pages" },
         ],
+        // TODO: your résumé lists "Designer & Marketing Manager" here — confirm the AI-engineering framing is how you want this positioned.
         contentReady: true,
         position: { x: 30, y: 80 },
         rotation: 0,
@@ -237,7 +242,7 @@ export const projects: Project[] = [
         section: "ideas",
         index: "09",
         title: "Office Management App",
-        label: "Office Management App",
+        label: "Office Management App — Tenant Concept",
         description:
             "A concept for a tenant app for a managed office building — parking reservations, meeting-room booking, visitor passes, an amenities directory, and building news, brought together in one calm native home screen.",
         role: "Concept · Product design",
